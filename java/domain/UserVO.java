@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class UserVO {
 
-	private int seq;
+	private Long seq;
 	private String id;
-	private long password;
+	private Long password;
 	private String name;
 	private String phone;
 	private String email;

@@ -29,25 +29,32 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserVO get(Long seq) {
 		// TODO Auto-generated method stub
-		return null;
+		log.info("get......" + seq);
+		
+		return mapper.read(seq);
 	}
 
 	@Override
 	public boolean modify(UserVO user) {
 		// TODO Auto-generated method stub
-		return false;
+		log.info("modify ...." + user);
+		return mapper.update(user) == 1;
 	}
 
 	@Override
 	public boolean remove(Long seq) {
 		// TODO Auto-generated method stub
-		return false;
+		log.info("remove...." + seq);
+		
+		return mapper.delete(seq) == 1;
 	}
 
 	@Override
 	public List<UserVO> getList() {
 		// TODO Auto-generated method stub
-		return null;
+		log.info("getList ....");
+		
+		return mapper.getList();
 	}
 	
 	
