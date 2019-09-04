@@ -37,7 +37,8 @@
 		phone = #{phone},
 		email = #{email},
 		address = #{address},
-		sex = #{sex}
+		sex = #{sex},
+		updatedate = sysdate
 		where seq = #{seq}
 	</update>
 </mapper>
