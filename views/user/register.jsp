@@ -60,6 +60,7 @@
 					<div class="form-group">
 						<label>SEX</label><input class="form-control" name='sex'>
 					</div>
+					
 					<button type="submit" class="btn btn-default">Submit Button</button>
 					<button type="reset" class="btn btn-edfault">Reset Button</button>
 				</form>

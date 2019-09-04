@@ -45,6 +45,9 @@
 						<th>EMAIL</th>
 						<th>ADDRESS</th>
 						<th>SEX</th>
+						<th>REGDATE</th>
+						<th>UPDATEDATE</th>
+						<th>UPDATE</th>
 				</thead>
 				<c:forEach items="${list}" var="user">
 					<tr>
@@ -56,12 +59,16 @@
 						<td><c:out value="${user.email}"/></td>
 						<td><c:out value="${user.address}"/></td>
 						<td><c:out value="${user.sex}"/></td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${user.regdate}"/></td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${user.updatedate}"/></td>
+				<td>
+				<button data-oper='modify' class="btn btn-danger" onclick="location.href='/user/modify?seq=<c:out value="${user.seq}"/>'">Modify</button>
+				</td>
 				</c:forEach>
 			</table>
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
 	$(document).ready(function(){
 		var result = '<c:out value="${result}"/>';
