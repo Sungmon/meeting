@@ -25,7 +25,7 @@ public class UserBoardController {
 	@GetMapping("/list")
 	public void list(Model model) {
 		
-		log.info(model);
+		log.info("list()");
 		
 		model.addAttribute("list", service.getList());
 	}
@@ -50,8 +50,8 @@ public class UserBoardController {
 	@GetMapping("/modify")
 	public void get(@RequestParam("seq") Long seq, Model model) {
 		
-		log.info("/modify");
-		model.addAttribute("seq", service.get(seq));
+		log.info("modify()");
+		model.addAttribute("user", service.get(seq));
 	}
 	
 	@PostMapping("/modify")

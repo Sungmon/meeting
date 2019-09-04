@@ -1,5 +1,9 @@
 package com.bit.domain;
 
+
+
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -13,4 +17,6 @@ public class UserVO {
 	private String email;
 	private String address;
 	private String sex;
+	private Date regdate;
+	private Date updatedate;
 }
