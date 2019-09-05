@@ -66,4 +66,5 @@ public class UserServiceImpl implements UserService{
 		return mapper.getTotalCount(cri);
 	}
 
+
 }

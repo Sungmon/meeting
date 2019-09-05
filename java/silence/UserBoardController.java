@@ -63,7 +63,7 @@ public class UserBoardController {
 	@PostMapping("/modify")
 	public String modify(@ModelAttribute("cri") Criteria cri, UserVO user, RedirectAttributes rttr) {
 		
-		log.info("modify :" + user);
+		log.info("modify :" + user + cri);
 		
 		if(service.modify(user)) {
 			rttr.addFlashAttribute("result", "success");
@@ -71,6 +71,8 @@ public class UserBoardController {
 		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/user/list";
 	}
@@ -78,7 +80,7 @@ public class UserBoardController {
 	@PostMapping("/remove")
 	public String remove(@ModelAttribute("cri") Criteria cri,@RequestParam("seq") Long seq, RedirectAttributes rttr) {
 		
-		log.info("remove..." + seq);
+		log.info("remove..." + seq + cri);
 		
 		if(service.remove(seq)) {
 			rttr.addFlashAttribute("result", "success");
@@ -86,6 +88,8 @@ public class UserBoardController {
 		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/user/list";
 	}
