@@ -31,10 +31,15 @@
 
 </head>
 <body>
-
+<form id='operForm' action="/user/list" method="get">
+	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+	<input type='hidden' id='seq' name='seq' value='<c:out value="${user.seq}"/>'>
+</form>
+      
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Board Register</h1>
+			<h1 class="page-header">Board Modify</h1>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -50,6 +55,8 @@
 
 
 					<form role="form" action="/user/modify" method="post">
+					<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum }"/>'>
+     				<input type='hidden' name='amount' value='<c:out value="${cri.amount }"/>'>
 						<div class="form-group">
 							<label>SEQ</label> <input class="form-control" name='seq'
 								value='<c:out value="${user.seq}"/>' readonly="readonly">
@@ -65,6 +72,10 @@
 						<div class="form-group">
 							<label>NAME</label> <input class="form-control" name='name'
 								value='<c:out value="${user.name}"/>'>
+						</div>
+						<div class="form-group">
+							<label>RRN</label> <input class="form-control" name='rrn'
+								value='<c:out value="${user.rrn}"/>'>
 						</div>
 						<div class="form-group">
 							<label>PHONE</label> <input class="form-control" name='phone'
@@ -94,7 +105,6 @@
 	</div>
 	
 	
-
 <script type="text/javascript">
 	$(document).ready(function(){
 
@@ -116,12 +126,20 @@
 				
 				self.location ="/user/list";
 				return;
-			}
+				
+			} 
 			formObj.submit();
 		});
+		
+		var operForm = $("#operForm");
+		
+		$("button[data-oper='list']").on("click", function(e){
+			
+			operForm.find("#seq")
+			operForm.attr("action", "/user/list")
+			operForm.submit();
+		});
 	});
-	
-	
 </script>
 
 

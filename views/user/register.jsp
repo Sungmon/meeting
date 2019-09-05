@@ -49,6 +49,9 @@
 						<label>NAME</label><input class="form-control" name='name'>
 					</div>
 					<div class="form-group">
+						<label>RRN</label><input class="form-control" name='rrn'>
+					</div>
+					<div class="form-group">
 						<label>PHONE</label><input class="form-control" name='phone'>
 					</div>
 					<div class="form-group">
