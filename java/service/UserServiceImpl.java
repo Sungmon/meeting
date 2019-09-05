@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.bit.domain.Criteria;
 import com.bit.domain.UserVO;
 import com.bit.mapper.UserMapper;
 
@@ -50,12 +51,19 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<UserVO> getList() {
+	public List<UserVO> getList(Criteria cri) {
 		// TODO Auto-generated method stub
-		log.info("getList ....");
+		log.info("get List with criteria :" + cri);
 		
-		return mapper.getList();
+		return mapper.getListWithPaging(cri);
 	}
-	
-	
+
+	@Override
+	public int getTotal(Criteria cri) {
+		// TODO Auto-generated method stub
+		log.info("get total count");
+		
+		return mapper.getTotalCount(cri);
+	}
+
 }

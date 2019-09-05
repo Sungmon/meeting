@@ -17,6 +17,7 @@ public class UserVO {
 	private String email;
 	private String address;
 	private String sex;
+	private Long rrn;
 	private Date regdate;
 	private Date updatedate;
 }

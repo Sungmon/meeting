@@ -2,6 +2,7 @@ package com.bit.service;
 
 import java.util.List;
 
+import com.bit.domain.Criteria;
 import com.bit.domain.UserVO;
 
 public interface UserService {
@@ -14,5 +15,9 @@ public interface UserService {
 	
 	public boolean remove(Long seq);
 	
-	public List<UserVO> getList();
+//	public List<UserVO> getList();
+	
+	public List<UserVO> getList(Criteria cri);
+	
+	public int getTotal(Criteria cri);
 }
