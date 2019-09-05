@@ -26,7 +26,7 @@
 	
 	<select id ="getList" resultType="com.bit.domain.UserVO">
 		<![CDATA[
-		select * from member where seq > 0
+		select * from member where seq > 0 and rownum <= 100
 		]]>
 	</select>
 	
@@ -36,7 +36,7 @@
 	
 	<insert id="insertSelectKey">
 		<selectKey keyProperty="seq" order="BEFORE" resultType="long">
-			select seq_board.nextval from dual
+			select seq_member.nextval from dual
 		</selectKey>
 		
 		insert into member(seq, id, password, name, phone, email, address, sex, rrn) values (seq_member.nextval,#{id},#{password},#{name},#{phone},#{email},#{address},#{sex},#{rrn})
@@ -55,12 +55,12 @@
 		id = #{id},
 		password = #{password},
 		name = #{name},
+		rrn = #{rrn},
 		phone = #{phone},
 		email = #{email},
 		address = #{address},
 		sex = #{sex},
-		updatedate = sysdate,
-		rrn = #{rrn}
+		updatedate = sysdate
 		where seq = #{seq}
 	</update>
 	
@@ -68,7 +68,7 @@
 		<![CDATA[
 		select seq, id, password, name, phone, email, address, sex, regdate, updatedate, rrn
 		from (
-			select /*INDEX_DESC(member pk_member) */
+			select /*+INDEX_DESC(member pk_member) */
 			rownum rn, seq, id, password, name, phone, email, address, sex, regdate, updatedate, rrn
 			from
 			member
