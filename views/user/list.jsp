@@ -91,7 +91,7 @@
 						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${user.regdate}"/></td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd" value="${user.updatedate}"/></td>
 				<%-- <td><button data-oper='modify' class="btn btn-danger" onclick="location.href='/user/modify?seq=<c:out value="${user.seq}"/>'">Modify</button></td> --%> 
-				<td><button data-oper='modify' class="btn btn-danger" onclick="location.href='/user/modify?seq=<c:out value="${user.seq}"/>&pageNum=<c:out value="${pageMaker.cri.pageNum}"/>&amount=<c:out value="${pageMaker.cri.amount}"/>'">Modify</button></td> 
+				<td><button data-oper='modify' class="btn btn-danger" onclick="location.href='/user/modify?seq=<c:out value="${user.seq}"/>&pageNum=<c:out value="${pageMaker.cri.pageNum}"/>&amount=<c:out value="${pageMaker.cri.amount}"/>&type=<c:out value="${pageMaker.cri.type}"/>&keyword=<c:out value="${pageMaker.cri.keyword}"/>'">Modify</button></td> 
 					</tr>
 				</c:forEach>
 			</table>

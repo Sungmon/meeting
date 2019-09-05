@@ -21,7 +21,7 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/resources/css/sb-admin-2.css" rel="stylesheet">
 
 <!-- Custom styles for this page -->
 <link href="/resources/vendor/datatables/dataTables.bootstrap4.min.css"
@@ -49,7 +49,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 
-				<div class="panel-heading">Board Modify</div>
+				<div class="panel-heading">Board Modify</div><br>
 				<!-- /.panel-heading -->
 				<div class="panel-body">
 
@@ -57,13 +57,15 @@
 					<form role="form" action="/user/modify" method="post">
 					<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum }"/>'>
      				<input type='hidden' name='amount' value='<c:out value="${cri.amount }"/>'>
+     				<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+     				<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
 						<div class="form-group">
 							<label>SEQ</label> <input class="form-control" name='seq'
 								value='<c:out value="${user.seq}"/>' readonly="readonly">
 						</div>
 						<div class="form-group">
 							<label>ID</label> <input class="form-control" name='id'
-								value='<c:out value="${user.id}"/>'>
+								value='<c:out value="${user.id}"/>' autofocus="autofocus" maxlength="30">
 						</div>
 						<div class="form-group">
 							<label>PASSWORD</label> <input class="form-control"
@@ -91,13 +93,14 @@
 						</div>
 						<div class="form-group">
 							<label>SEX</label> <input class="form-control" name='sex'
-								value='<c:out value="${user.sex}"/>'>
+								value='<c:out value="${user.sex}"/>'><br><br>
 						</div>
-	
-						<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
-						<button type="submit" data-oper='remove' class="btn btn-default">Remove</button>
-						<button type="submit" data-oper='list' class="btn btn-default">List</button>
-					</form>
+						<div class='pagination'>
+						<button type="submit" data-oper='modify' class="btn btn-dark">Modify</button>
+						<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
+						<button type="submit" data-oper='list' class="btn btn-outline-dark">List</button>
+						</div>
+					</form>	
 				</div>
 			</div>
 		</div>
@@ -124,8 +127,19 @@
 				
 			} else if(operation === 'list') {
 				
-				self.location ="/user/list";
-				return;
+				formObj.attr("action","/user/list").attr("method","get");
+				
+				var pageNumTag = $("input[name='pageNum']").clone();
+				var amountTag = $("input[name='amount']").clone();
+				var keywordTag = $("input[name='keyword']").clone();
+				var typeTag = $("input[name='type']").clone();
+				
+				formObj.empty();
+				
+				formObj.append(pageNumTag);
+				formObj.append(amountTag);
+				formObj.append(keywordTag);
+				formObj.append(typeTag);
 				
 			} 
 			formObj.submit();
